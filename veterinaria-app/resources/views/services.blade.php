@@ -41,6 +41,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="{{ route('expediente') }}">Mi Expediente</a></li>
+                  <li><a class="dropdown-item" href="{{ route('mis-citas') }}">Mis Citas</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -76,10 +77,10 @@
         @foreach($servicios as $servicio)
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
-              <img src="{{ asset('images/imagenes_services/servicio_' . $servicio->id_servicio . '.jpg') }}" 
+              <img src="{{ asset('images/servicios/servicio_' . $servicio->id_servicio . '.jpg') }}" 
                    class="card-img-top" 
                    alt="{{ $servicio->nombre }}"
-                   onerror="this.src='{{ asset('images/imagenes_services/default.jpg') }}'">
+                   onerror="this.src='{{ asset('images/servicios/default.jpg') }}'">
               <div class="card-body">
                 <h5 class="card-title">{{ $servicio->nombre }}</h5>
                 <p class="card-text">{{ $servicio->descripcion }}</p>
@@ -90,7 +91,7 @@
                 @endif
               </div>
               <div class="card-footer bg-white border-0 pb-3">
-                <a href="#" class="btn boton-verde w-100">
+                <a href="{{ route('agendar.cita', $servicio->id_servicio) }}" class="btn boton-verde w-100">
                   <i class="fas fa-calendar-plus me-2"></i>Agendar Cita
                 </a>
               </div>
