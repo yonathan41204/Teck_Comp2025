@@ -41,7 +41,6 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="{{ route('expediente') }}">Mi Expediente</a></li>
-                  <li><a class="dropdown-item" href="{{ route('mis-citas') }}">Mis Citas</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
                     <form method="POST" action="{{ route('logout') }}">
