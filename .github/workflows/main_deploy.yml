@@ -54,10 +54,14 @@ jobs:
       - name: Unzip artifact
         run: unzip release.zip
 
-      - name: Deploy to Azure Web App (Publish Profile)
+      # ELIMINADO: El paso "Login to Azure" causaba el conflicto. 
+      # Usaremos solo el perfil de publicación abajo.
+
+      - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
         with:
           app-name: 'pawsitiveCare'
-          slot-name: 'Production'
+          # slot-name: 'Production'  <-- A veces esto falla si no tienes slots configurados, es más seguro comentarlo
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
